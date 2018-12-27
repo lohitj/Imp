@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand mb-0 h1" href="#">
+    <img height=50 width=50 src="/assets/Images/n-s-j-plumbing-contractors-begumpet-hyderabad-plumbers-0ly303sxun.jpg">
+    Call Plumber
+  </a>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass] = "{'show' : navbarOpen }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-fw fa-home"></i>Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-fw fa-search"></i>About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-fw fa-wordpress"></i>Blog</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="User">
+      <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>&nbsp;
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#myExtraLargeModalLabel">Register</button>
+    </form>
+  </div>
+</nav>
