@@ -4,3 +4,4 @@ name -- usertshoot
 pwd -- Infy1234! 
 ignore infyadmin
 anything else you need
+https://blog.openshift.com/getting-started-helm-openshift/
