@@ -1,0 +1,59 @@
+def checout()
+{
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: 
+    [[credentialsId: 'test', url: "git@gitlab.com:k_amal/application-service.git"]]])
+}
+node
+{
+   def MAVEN_HOME = tool "MAVEN_HOME"
+   def JAVA_HOME = tool "JAVA_HOME"
+   
+   
+		stage('Checkout')
+		{
+				checout()
+				echo "${workspace}"
+				sh 'whoami'
+				sh 'export PATH=$PATH:/home/lohit/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/linux-amd64'
+		}
+		stage('Initial Setup')
+        {
+            sh 'sudo mvn clean compile'
+        }
+        stage('Test')
+        {
+            sh 'sudo mvn test'
+        }
+		stage('Build')
+		{
+		      //  sh 'chmod +x build-application-svc.sh'
+		      //  sh 'sudo ./build-application-svc.sh'
+	
+		}
+		stage('Deploying Application-Service')
+		{
+		    sh '/home/lohit/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/oc login https://masterdnsj2p5wq2nzrzvo.southindia.cloudapp.azure.com -u infyadmin -p Openshift++ --insecure-skip-tls-verify'
+		    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: 
+    [[credentialsId: 'githelm', url: "https://github.com/rajeshdeshpande02/platform-helmcharts.git"]]])
+		    sh '/home/lohit/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/linux-amd64/helm install application-service -n application-service'
+			
+		}
+		stage('Deploying Composite-Service')
+		{
+			
+				sh '/home/lohit/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/linux-amd64/helm install composite-service -n composite-service'	
+			
+		}
+		stage('Deploying Jhipster-Service')
+		{
+			sh '/home/lohit/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/linux-amd64/helm install jhipster-service -n jhipster-service'
+		}
+		stage('Deploying Platform-Service')
+		{
+			sh '/home/lohit/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/linux-amd64/helm install platfrom-service -n platfrom-service'
+		}
+		stage('Deploying Web-Service')
+		{
+			sh '/home/lohit/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/linux-amd64/helm install web-service -n web-service'
+		}
+}
