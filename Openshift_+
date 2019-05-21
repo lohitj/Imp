@@ -24,36 +24,36 @@ node
    def JAVA_HOME = tool "JAVA_HOME"
    
 
-// 		stage('Building docker Image for application-service')
-// 		{
-// 				applicationservice()
-// 				echo "${workspace}"
-// 		        //sh 'sudo mvn clean compile'
-// 		        //sh 'sudo mvn test'
-// 		        sh 'chmod +x build-application-svc.sh'
-// 		        sh 'sudo ./build-application-svc.sh $IMAGE_TAG'
+		stage('Building docker Image for application-service')
+		{
+				applicationservice()
+				echo "${workspace}"
+		        //sh 'sudo mvn clean compile'
+		        //sh 'sudo mvn test'
+		        sh 'chmod +x build-application-svc.sh'
+		        sh 'sudo ./build-application-svc.sh $IMAGE_TAG'
 		    
-// 		}
-// 		stage('Building docker Image for composite-service')
-// 		{
-// 		      compositeservice()
-// 		      //sh 'sudo mvn clean compile'
-// 		      //sh 'sudo mvn test'
-// 		      sh 'chmod +x build-composite-svc.sh'
-// 		      sh 'sudo ./build-composite-svc.sh $IMAGE_TAG'
+		}
+		stage('Building docker Image for composite-service')
+		{
+		      compositeservice()
+		      //sh 'sudo mvn clean compile'
+		      //sh 'sudo mvn test'
+		      sh 'chmod +x build-composite-svc.sh'
+		      sh 'sudo ./build-composite-svc.sh $IMAGE_TAG'
 	
-// 		}
-// 		stage('Building docker Image for platform-service')
-// 		{
-// 		      platformservice()
-// 		      //sh 'sudo mvn clean compile'
-// 		      //sh 'sudo mvn test'
+		}
+		stage('Building docker Image for platform-service')
+		{
+		      platformservice()
+		      //sh 'sudo mvn clean compile'
+		      //sh 'sudo mvn test'
 		      
-// 		      sh 'chmod +x src/restful-openshiftapp/docker-build.sh'
-// 		      sh 'pwd'
-// 		      sh 'sudo src/restful-openshiftapp/docker-build.sh $IMAGE_TAG'
+		      sh 'chmod +x src/restful-openshiftapp/docker-build.sh'
+		      sh 'pwd'
+		      sh 'sudo src/restful-openshiftapp/docker-build.sh $IMAGE_TAG'
 	
-// 		}
+		}
 	stage('Building docker Image for UI-service')
 		{
 		      webservice()
