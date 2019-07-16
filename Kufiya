@@ -1,0 +1,13 @@
+stage('VAriable')
+    {
+            sh 'oc login https://masterdnsj2p5wq2nzrzvo.southindia.cloudapp.azure.com:443 -u infyadmin -p Openshift++ --insecure-skip-tls-verify'
+            def gdf = sh (
+                    script: 'oc whoami -t',
+                    returnStdout: true
+                ).trim()
+                println 'lohit'
+            println gdf
+            sh "echo '${workspace}'"
+            sh "echo 'sfnkw'"
+            sh "echo '/home/jenkins/workspace/${env.JOB_NAME}/'"
+    }
