@@ -1,4 +1,5 @@
 https://masterdnsj2p5wq2nzrzvo.southindia.cloudapp.azure.com 
+10.74.91.103
 infyadmin
 name -- usertshoot
 pwd -- Infy1234! 
